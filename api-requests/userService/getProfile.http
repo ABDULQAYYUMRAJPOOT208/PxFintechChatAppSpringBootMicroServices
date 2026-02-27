@@ -1,0 +1,10 @@
+
+
+### curl request
+/*
+curl -X GET http://localhost:8081/api/v1/users/profile \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+*/
+GET http://localhost:8081/api/v1/users/profile
+Authorization: Bearer YOUR_JWT_TOKEN
+

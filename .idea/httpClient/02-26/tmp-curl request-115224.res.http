@@ -1,0 +1,25 @@
+// Status: 400, time: 13ms, size: 109 B
+### curl request
+POST http://localhost:8080/api/v1/auth/register HTTP/1.1
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+connection: close
+content-type: application/json
+date: Thu, 26 Feb 2026 18:52:24 GMT
+expires: 0
+pragma: no-cache
+transfer-encoding: chunked
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-xss-protection: 0
+
+{
+  "errors": {
+    "password": "Password must not be blank"
+  },
+  "timestamp": "2026-02-26T23:52:24.125414424",
+  "status": 400
+}
+>> /home/vos/work/java/FintechChatApp/.idea/httpClient/02-26/curl request/2026-02-26T235224.json

@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "password": "Password must not be blank"
+  },
+  "timestamp": "2026-02-26T23:53:03.856752902",
+  "status": 400
+}

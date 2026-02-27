@@ -1,0 +1,86 @@
+2026-02-27 00:16:06 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 115119 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
+2026-02-27 00:16:06 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 128 ms. Found 1 JPA repository interfaces.
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-02-27 00:16:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2026-02-27 00:16:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-02-27 00:16:09 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-27 00:16:09 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-02-27 00:16:09 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2026-02-27 00:16:09 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2838 ms
+2026-02-27 00:16:09 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-27 00:16:09 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-02-27 00:16:09 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-02-27 00:16:10 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-27 00:16:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-27 00:16:10 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@20184ade
+2026-02-27 00:16:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-27 00:16:10 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-27 00:16:11 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-27 00:16:11 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-27 00:16:12 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-02-27 00:16:12 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-27 00:16:12 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b4a3114, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4af5c14c, org.springframework.security.web.context.SecurityContextHolderFilter@750448fb, org.springframework.security.web.header.HeaderWriterFilter@565fa7d2, org.springframework.web.filter.CorsFilter@74d4f542, org.springframework.web.filter.CorsFilter@25d5327, org.springframework.security.web.authentication.logout.LogoutFilter@352bea0e, com.pxfintech.user_service.security.JwtAuthenticationFilter@21fa19e4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70a26eca, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c74251b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@188500e9, org.springframework.security.web.session.SessionManagementFilter@d41518b, org.springframework.security.web.access.ExceptionTranslationFilter@78b888df, org.springframework.security.web.access.intercept.AuthorizationFilter@a8177f6]
+2026-02-27 00:16:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api/v1'
+2026-02-27 00:16:13 [main] INFO  c.p.u.UserServiceApplication - Started UserServiceApplication in 7.552 seconds (process running for 8.135)
+2026-02-27 00:19:12 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-27 00:19:12 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-27 00:19:12 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-02-27 00:19:12 [http-nio-8080-exec-2] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-02-27 00:19:13 [http-nio-8080-exec-2] INFO  c.p.user_service.service.OTPService - OTP genrated for phoneNumber: 03250880763
+2026-02-27 00:19:13 [http-nio-8080-exec-2] INFO  c.p.user_service.service.OTPService - Your OTP is: 755801
+2026-02-27 00:19:13 [http-nio-8080-exec-2] INFO  c.p.u.service.AuthServiceImp - Login OTP: 755801 sent to: 03250880763
+2026-02-27 00:19:22 [http-nio-8080-exec-3] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-02-27 00:19:22 [http-nio-8080-exec-3] INFO  c.p.user_service.service.OTPService - OTP genrated for phoneNumber: 03250880763
+2026-02-27 00:19:22 [http-nio-8080-exec-3] INFO  c.p.user_service.service.OTPService - Your OTP is: 552272
+2026-02-27 00:19:22 [http-nio-8080-exec-3] INFO  c.p.u.service.AuthServiceImp - Login OTP: 552272 sent to: 03250880763
+2026-02-27 00:21:14 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-27 00:21:14 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-27 00:21:14 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-27 00:21:19 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 115790 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
+2026-02-27 00:21:19 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120 ms. Found 1 JPA repository interfaces.
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-02-27 00:21:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2026-02-27 00:21:22 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-02-27 00:21:22 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-27 00:21:22 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-02-27 00:21:22 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2026-02-27 00:21:22 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2649 ms
+2026-02-27 00:21:22 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-27 00:21:22 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-02-27 00:21:22 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-02-27 00:21:23 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-27 00:21:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-27 00:21:23 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@fd5689d
+2026-02-27 00:21:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-27 00:21:23 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-27 00:21:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-27 00:21:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-27 00:21:25 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-02-27 00:21:25 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-27 00:21:25 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2b14628b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64657b13, org.springframework.security.web.context.SecurityContextHolderFilter@3be88cbf, org.springframework.security.web.header.HeaderWriterFilter@63b4a896, org.springframework.web.filter.CorsFilter@686ee555, org.springframework.web.filter.CorsFilter@4fc00158, org.springframework.security.web.authentication.logout.LogoutFilter@41dbf02b, com.pxfintech.user_service.security.JwtAuthenticationFilter@4a467ada, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44252e9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@788a7567, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@47483211, org.springframework.security.web.session.SessionManagementFilter@ece7204, org.springframework.security.web.access.ExceptionTranslationFilter@224f90eb, org.springframework.security.web.access.intercept.AuthorizationFilter@828e2d8]
+2026-02-27 00:21:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api/v1'
+2026-02-27 00:21:26 [main] INFO  c.p.u.UserServiceApplication - Started UserServiceApplication in 7.38 seconds (process running for 7.978)
+2026-02-27 00:21:30 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-27 00:21:30 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-27 00:21:30 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-02-27 00:21:30 [http-nio-8080-exec-1] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-02-27 00:21:30 [http-nio-8080-exec-1] INFO  c.p.u.service.AuthServiceImp - User for login >> User{id='843ed1ed-708b-402e-8f4d-5db03e01d4e9', phoneNumber='03250880763', fullName='ABDUL QAYYUM', email='educationlogin1234@gmail.com', password='1@2.com', isVerified=true, createdAt=2026-02-26T23:54:09.375635, updatedAt=2026-02-26T23:55:42.989806, lastLoginAt=null, isOnline=false}
+2026-02-27 00:21:31 [http-nio-8080-exec-1] INFO  c.p.user_service.service.OTPService - OTP genrated for phoneNumber: 03250880763
+2026-02-27 00:21:31 [http-nio-8080-exec-1] INFO  c.p.user_service.service.OTPService - Your OTP is: 368311
+2026-02-27 00:21:31 [http-nio-8080-exec-1] INFO  c.p.u.service.AuthServiceImp - Login OTP: 368311 sent to: 03250880763
+2026-02-27 00:23:07 [http-nio-8080-exec-5] INFO  c.p.u.service.AuthServiceImp - Registering user with phone: 03250880763
+2026-02-27 00:23:07 [http-nio-8080-exec-5] INFO  c.p.user_service.service.OTPService - OTP genrated for phoneNumber: 03250880763
+2026-02-27 00:23:07 [http-nio-8080-exec-5] INFO  c.p.user_service.service.OTPService - Your OTP is: 988805
+2026-02-27 00:23:07 [http-nio-8080-exec-5] INFO  c.p.u.service.AuthServiceImp - User registered successfully with ID: 1c230856-835e-4e08-aedd-f82f99cc3b67
+2026-02-27 00:23:50 [http-nio-8080-exec-6] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-02-27 00:23:50 [http-nio-8080-exec-6] INFO  c.p.u.service.AuthServiceImp - User for login >> User{id='1c230856-835e-4e08-aedd-f82f99cc3b67', phoneNumber='03250880763', fullName='ABDUL QAYYUM', email='educationlogin1234@gmail.com', password='1@2.com', isVerified=false, createdAt=2026-02-27T00:23:07.720703, updatedAt=2026-02-27T00:23:07.720740, lastLoginAt=null, isOnline=false}

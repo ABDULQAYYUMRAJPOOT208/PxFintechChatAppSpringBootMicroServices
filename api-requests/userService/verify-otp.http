@@ -1,0 +1,19 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8081/api/v1/auth/verify-otp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phoneNumber": "1234567890",
+    "otp": "123456"
+  }'
+*/
+POST http://localhost:8081/api/v1/auth/verify-otp
+Content-Type: application/json
+
+{
+    "phoneNumber": "1234567890",
+    "otp": "123456"
+  }
+
