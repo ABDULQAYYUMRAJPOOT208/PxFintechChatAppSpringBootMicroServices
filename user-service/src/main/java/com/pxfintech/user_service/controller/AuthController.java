@@ -1,14 +1,16 @@
 package com.pxfintech.user_service.controller;
 
-import com.pxfintech.user_service.dto.*;
+import com.pxfintech.user_service.dto.auth.AuthResponse;
+import com.pxfintech.user_service.dto.otp.VerifyOTPRequest;
+import com.pxfintech.user_service.dto.user.UserLoginRequestDto;
+import com.pxfintech.user_service.dto.user.UserRegisterRequestDto;
+import com.pxfintech.user_service.dto.user.UserResponseDto;
 import com.pxfintech.user_service.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List; // Good practice to use List instead of Arrays
 
 @RestController
 @RequestMapping("/auth")

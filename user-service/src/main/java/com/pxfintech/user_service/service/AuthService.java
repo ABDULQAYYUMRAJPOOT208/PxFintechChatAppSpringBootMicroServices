@@ -1,6 +1,10 @@
 package com.pxfintech.user_service.service;
 
-import com.pxfintech.user_service.dto.*;
+import com.pxfintech.user_service.dto.auth.AuthResponse;
+import com.pxfintech.user_service.dto.otp.VerifyOTPRequest;
+import com.pxfintech.user_service.dto.user.UserLoginRequestDto;
+import com.pxfintech.user_service.dto.user.UserRegisterRequestDto;
+import com.pxfintech.user_service.dto.user.UserResponseDto;
 
 public interface AuthService {
     UserResponseDto register(UserRegisterRequestDto request);

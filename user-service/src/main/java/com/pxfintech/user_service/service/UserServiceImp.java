@@ -1,6 +1,6 @@
 package com.pxfintech.user_service.service;
 
-import com.pxfintech.user_service.dto.UserResponseDto;
+import com.pxfintech.user_service.dto.user.UserResponseDto;
 import com.pxfintech.user_service.model.User;
 import com.pxfintech.user_service.repo.UserRepo;
 import lombok.RequiredArgsConstructor;

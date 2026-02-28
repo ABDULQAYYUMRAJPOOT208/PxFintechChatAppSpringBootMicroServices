@@ -1,4 +1,4 @@
-package com.pxfintech.user_service.dto;
+package com.pxfintech.user_service.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

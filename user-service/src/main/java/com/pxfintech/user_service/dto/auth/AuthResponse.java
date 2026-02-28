@@ -1,6 +1,7 @@
-package com.pxfintech.user_service.dto;
+package com.pxfintech.user_service.dto.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.pxfintech.user_service.dto.user.UserResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

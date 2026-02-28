@@ -1,6 +1,6 @@
 package com.pxfintech.user_service.controller;
 
-import com.pxfintech.user_service.dto.UserResponseDto;
+import com.pxfintech.user_service.dto.user.UserResponseDto;
 import com.pxfintech.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

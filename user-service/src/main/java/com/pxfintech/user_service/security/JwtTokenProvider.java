@@ -24,62 +24,50 @@ public class JwtTokenProvider {
     @Value("${jwt.refresh-expiration}")
     private Long refreshExpiration;
 
-    private Key key(){
+    private Key key() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String phoneNumber, String userId)
-    {
-        Map<String,Object> claims = new HashMap<>();
+    public String generateToken(String phoneNumber, String userId) {
+        Map<String, Object> claims = new HashMap<>();
 
-        claims.put("userId",userId);
-        claims.put("type","access");
-        return createToken(claims,phoneNumber,expiration);
+        claims.put("userId", userId);
+        claims.put("type", "access");
+        return createToken(claims, phoneNumber, expiration);
     }
 
-    public String generateRefreshToken(String phoneNumber)
-    {
-        Map<String,Object> claims = new HashMap<>();
-        claims.put("type","refresh");
+    public String generateRefreshToken(String phoneNumber) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("type", "refresh");
 
-        return createToken(claims,phoneNumber,refreshExpiration);
+        return createToken(claims, phoneNumber, refreshExpiration);
     }
 
-
-    private String createToken(Map<String,Object> claims,
-                               String subject, Long expiry)
-    {
+    private String createToken(Map<String, Object> claims,
+            String subject, Long expiry) {
 
         return Jwts.builder().setClaims(claims)
                 .setSubject(subject)
-                .setIssuedAt(new Date()).
-                setExpiration(new Date(System.currentTimeMillis() + expiry))
-                .signWith(key(),SignatureAlgorithm.HS256)
+                .setIssuedAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + expiry))
+                .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-
-    public boolean validateToken(String token)
-    {
-        try
-        {
+    public boolean validateToken(String token) {
+        try {
             Jwts.parserBuilder()
                     .setSigningKey(key())
                     .build().parse(token);
             return !isTokenExpired(token);
-        }catch (MalformedJwtException e)
-        {
+        } catch (MalformedJwtException e) {
             log.error("Invalid JWT token: {}", e.getMessage());
-        }catch (ExpiredJwtException e)
-        {
+        } catch (ExpiredJwtException e) {
             log.error("JWT token is expired: {}", e.getMessage());
 
-        }catch (UnsupportedJwtException e)
-        {
+        } catch (UnsupportedJwtException e) {
             log.error("JWT token is unsupported: {}", e.getMessage());
 
-        }catch (IllegalArgumentException e)
-        {
+        } catch (IllegalArgumentException e) {
             log.error("JWT claims string is empty: {}", e.getMessage());
 
         }
@@ -87,27 +75,23 @@ public class JwtTokenProvider {
     }
 
     public String getPhoneNumberFromToken(String token) {
-        return getClaimFromToken(token,Claims::getSubject);
+        return getClaimFromToken(token, Claims::getSubject);
     }
 
-    public String getUserIdFromToken(String token)
-    {
+    public String getUserIdFromToken(String token) {
         return getClaimFromToken(token, claims -> claims.get("userId", String.class));
     }
 
-    public Date getExpirationDateFromToken(String token)
-    {
-        return getClaimFromToken(token,Claims::getExpiration);
+    public Date getExpirationDateFromToken(String token) {
+        return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    private <T> T getClaimFromToken(String token, Function<Claims,T> claimsResolver)
-    {
+    private <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
 
-    private Claims getAllClaimsFromToken(String token)
-    {
+    private Claims getAllClaimsFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key())
                 .build()
@@ -115,8 +99,12 @@ public class JwtTokenProvider {
                 .getBody();
     }
 
-    private  boolean isTokenExpired(String token)
-    {
+    public boolean isRefreshToken(String token) {
+        String type = getClaimFromToken(token, claims -> claims.get("type", String.class));
+        return "refresh".equals(type);
+    }
+
+    private boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }

@@ -14,25 +14,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImp implements UserDetailsService {
-    private final UserRepo userRepo;
+        private final UserRepo userRepo;
 
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException
-    {
-        User user = userRepo.findByPhoneNumber(phoneNumber)
-                .orElseThrow(()-> new UsernameNotFoundException(
-                        "User not found with phone: " + phoneNumber
-                ));
+        @Override
+        @Transactional
+        public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
+                User user = userRepo.findByPhoneNumber(phoneNumber)
+                                .orElseThrow(() -> new UsernameNotFoundException(
+                                                "User not found with phone: " + phoneNumber));
 
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getPhoneNumber())
-                .password("")
-                .roles("USER")
-                .accountExpired(false)
-                .accountLocked(false)
-                .credentialsExpired(false)
-                .disabled(!user.getIsVerified())
-                .build();
-    }
+                return org.springframework.security.core.userdetails.User.builder()
+                                .username(user.getPhoneNumber())
+                                .password(user.getPassword())
+                                .roles("USER")
+                                .accountExpired(false)
+                                .accountLocked(false)
+                                .credentialsExpired(false)
+                                .disabled(!user.getIsVerified())
+                                .build();
+        }
 }
