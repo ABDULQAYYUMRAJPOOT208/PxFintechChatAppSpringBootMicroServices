@@ -1,0 +1,114 @@
+1. The Entry Point: UserServiceApplication
+Every Spring Boot app starts here.
+
+File: com.pxfintech.user_service.UserServiceApplication
+Role: It initializes the Spring Context, starts the embedded Tomcat server (on port 8080), and scans your packages for components, configurations, and controllers.
+2. The "Gatekeeper" Layer: SecurityConfig & Filters
+Before a request even reaches a Controller, it must pass through the Security Filter Chain.
+
+Configuration: 
+
+SecurityConfig.java
+This file defines which URLs are "public" (like /auth/**) and which require a login.
+It hooks in the 
+
+JwtAuthenticationFilter.java
+.
+The Request Journey through Filters:
+Incoming Request: A client hits GET /api/v1/users/profile.
+JWT Filter: The request is intercepted by 
+
+JwtAuthenticationFilter
+.
+It looks for the Authorization: Bearer <token> header.
+It calls 
+
+JwtTokenProvider.java
+ to validate the signature and expiry.
+If valid, it tells Spring Security: "This request is authenticated as User X."
+It also sets a request attribute userId for easy access later.
+3. The Routing Layer: Controllers
+Once cleared by security, the request is routed to the appropriate RestController.
+
+Public Endpoints: 
+
+AuthController.java
+Handles /auth/register, /auth/login, /auth/verify-otp.
+These don't need a token because you use them to get a token.
+Protected Endpoints: 
+
+UserController.java
+Handles /users/profile, /users/{id}.
+These require the @RequestAttribute String userId which was set by the Filter.
+4. The Logic Layer: Services
+Controllers are kept "thin." They immediately delegate work to the Service Layer.
+
+File: 
+
+AuthServiceImp.java
+Role: This is where the heavy lifting happens:
+Password Encoding: Using PasswordEncoder before saving to DB.
+Persistence: Using 
+
+UserRepo.java
+ to interact with Postgres.
+Messaging: Calling 
+
+UserEventProducer.java
+ to send events to Kafka.
+5. Asynchronous Events: Kafka
+When something important happens (like a user registering or coming online), the service doesn't wait for other services. It "fires and forgets" a message.
+
+Flow: 
+
+AuthServiceImp
+ -> 
+
+UserEventProducer
+ -> KafkaTopic.
+Scenario: If you later add a Notification Service, it will "listen" to the user-registration topic and automatically send a welcome SMS without you needing to change any code in the user-service.
+6. The Safety Net: Exception Handling
+What if something goes wrong? (e.g., a user registers with a phone number that already exists).
+
+File: 
+
+GlobalExceptionHandler.java
+Mechanism:
+A Service throws a 
+
+RuntimeException("User already exists")
+.
+Spring catches this exception.
+It looks for an @ExceptionHandler in 
+
+GlobalExceptionHandler
+.
+It converts the "ugly" Java error into a clean JSON response for the client:
+json
+{
+  "timestamp": "2026-02-28...",
+  "message": "User already exists",
+  "status": 400
+}
+Summary Flow Diagram
+mermaid
+sequenceDiagram
+    participant Client
+    participant Filter (JWT)
+    participant Controller
+    participant Service
+    participant Database (Postgres)
+    participant Kafka
+    Client->>Filter (JWT): Request /users/profile (with Token)
+    Filter (JWT)->>Filter (JWT): Validate Token
+    Filter (JWT)->>Controller: Route to getUserProfile()
+    Controller->>Service: userService.getUserById(id)
+    Service->>Database (Postgres): Find User by ID
+    Database (Postgres)-->>Service: Return User Object
+    Service-->>Controller: Return UserResponseDto
+    Controller-->>Client: 200 OK + JSON
+    
+    Note over Service, Kafka: On Registration
+    Service->>Kafka: Publish USER_REGISTERED event
+This architecture ensures that your code is decoupled (service doesn't care about DB technology), secure (centralized filter), and scalable (asynchronicity via Kafka).
+

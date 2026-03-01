@@ -47,7 +47,6 @@ public class AuthServiceImp implements AuthService {
 
         otpService.generateAndSendOTP(savedUser.getPhoneNumber());
 
-        // Emit User Registered Event
         userEventProducer.sendUserRegistrationEvent(UserEvent.builder()
                 .userId(savedUser.getId())
                 .phoneNumber(savedUser.getPhoneNumber())
@@ -157,7 +156,6 @@ public class AuthServiceImp implements AuthService {
                     .phoneNumber(request.getPhoneNumber())
                     .build();
         }
-        // Find and update user
         User user = userRepo.findByPhoneNumber(request.getPhoneNumber())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -165,10 +163,8 @@ public class AuthServiceImp implements AuthService {
         user.setIsOnline(true);
         userRepo.save(user);
 
-        // Emit User Online Event
         userEventProducer.sendUserStatusEvent(user.getId(), user.getPhoneNumber(), "USER_ONLINE");
 
-        // Convert to response DTO
         UserResponseDto userResponse = new UserResponseDto();
         userResponse.setId(user.getId());
         userResponse.setPhoneNumber(user.getPhoneNumber());
