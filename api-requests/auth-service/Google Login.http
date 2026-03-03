@@ -1,0 +1,21 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/social/google \
+  -H "Content-Type: application/json" \
+  -d '{
+    "idToken": "YOUR_GOOGLE_ID_TOKEN",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }'
+*/
+POST http://localhost:8082/api/v1/social/google
+Content-Type: application/json
+
+{
+    "idToken": "YOUR_GOOGLE_ID_TOKEN",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }
+

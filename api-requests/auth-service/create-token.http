@@ -1,0 +1,21 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/oauth2/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "grantType": "client_credentials",
+    "clientId": "fintech-mobile-app",
+    "clientSecret": "secret"
+  }'
+*/
+POST http://localhost:8082/api/v1/oauth2/token
+Content-Type: application/json
+
+{
+    "grantType": "client_credentials",
+    "clientId": "fintech-mobile-app",
+    "clientSecret": "secret"
+  }
+

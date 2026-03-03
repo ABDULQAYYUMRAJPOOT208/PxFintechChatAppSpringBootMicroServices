@@ -1,0 +1,16 @@
+// Status: 401, time: 242ms, size: 0 B
+### curl request
+POST http://localhost:8082/api/v1/oauth2/token HTTP/1.1
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+content-length: 0
+date: Mon, 02 Mar 2026 15:56:12 GMT
+expires: 0
+pragma: no-cache
+set-cookie: JSESSIONID=068672DBC47465A65B90B3EBF6AE1E8F; Path=/api/v1; HttpOnly
+www-authenticate: Basic realm="Realm"
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-xss-protection: 0
+
+
+>> /home/vos/work/java/FintechChatApp/.idea/httpClient/03-02/curl request/2026-03-02T205613.txt

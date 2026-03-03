@@ -1,0 +1,11 @@
+for i in {1..6}; do
+  curl -X POST http://localhost:8082/api/v1/auth/verify-otp \
+    -H "Content-Type: application/json" \
+    -d '{
+      "phoneNumber": "1234567890",
+      "otp": "000000"
+    }'
+  echo ""
+done
+
+# User should be blocked after 5 attempts

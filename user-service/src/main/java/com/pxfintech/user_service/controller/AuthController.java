@@ -35,6 +35,18 @@ public class AuthController {
     @PostMapping("/verify-otp")
     public ResponseEntity<AuthResponse> verifyOtp(@Valid @RequestBody VerifyOTPRequest request) {
         AuthResponse response = authService.verifyOtp(request);
+
+//       TokenResponse tokenResponse = restTemplate.postForObject(
+//        "http://authentication-service/oauth2/token",
+//        createTokenRequest(user),
+//        TokenResponse.class
+//    );
+//
+//    return AuthResponse.builder()
+//        .accessToken(tokenResponse.getAccessToken())
+//        .refreshToken(tokenResponse.getRefreshToken())
+//        .user(userResponse)
+//        .build();
         return ResponseEntity.ok(response);
     }
 

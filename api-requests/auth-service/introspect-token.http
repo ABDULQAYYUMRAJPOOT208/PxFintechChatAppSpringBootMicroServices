@@ -1,0 +1,8 @@
+
+
+### curl request
+/*
+curl -X POST "http://localhost:8082/api/v1/oauth2/introspect?token=YOUR_ACCESS_TOKEN"
+*/
+POST http://localhost:8082/api/v1/oauth2/introspect?token=YOUR_ACCESS_TOKEN
+

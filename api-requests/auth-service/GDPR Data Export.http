@@ -1,0 +1,10 @@
+
+
+### curl request
+/*
+curl -X POST "http://localhost:8082/api/v1/security/admin/compliance/export/user123" \
+  -H "Authorization: Bearer ADMIN_TOKEN"
+*/
+POST http://localhost:8082/api/v1/security/admin/compliance/export/user123
+Authorization: Bearer ADMIN_TOKEN
+

@@ -1,0 +1,23 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/social/apple \
+  -H "Content-Type: application/json" \
+  -d '{
+    "idToken": "YOUR_APPLE_ID_TOKEN",
+    "accessToken": "YOUR_AUTHORIZATION_CODE",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }'
+*/
+POST http://localhost:8082/api/v1/social/apple
+Content-Type: application/json
+
+{
+    "idToken": "YOUR_APPLE_ID_TOKEN",
+    "accessToken": "YOUR_AUTHORIZATION_CODE",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }
+

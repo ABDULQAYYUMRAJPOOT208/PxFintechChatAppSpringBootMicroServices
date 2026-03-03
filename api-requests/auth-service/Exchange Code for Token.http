@@ -1,0 +1,14 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -u "fintech-web-app:web-secret" \
+  -d "grant_type=authorization_code&code=YOUR_AUTHORIZATION_CODE&redirect_uri=http://localhost:3000/callback&code_verifier=plain_challenge"
+*/
+POST http://localhost:8082/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=YOUR_AUTHORIZATION_CODE&redirect_uri=http://localhost:3000/callback&code_verifier=plain_challenge
+

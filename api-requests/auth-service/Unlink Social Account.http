@@ -1,0 +1,10 @@
+
+
+### curl request
+/*
+curl -X DELETE http://localhost:8082/api/v1/social/unlink/google \
+  -H "Authorization: Bearer YOUR_USER_ACCESS_TOKEN"
+*/
+DELETE http://localhost:8082/api/v1/social/unlink/google
+Authorization: Bearer YOUR_USER_ACCESS_TOKEN
+

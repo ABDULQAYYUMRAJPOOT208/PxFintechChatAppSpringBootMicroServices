@@ -1,0 +1,21 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/social/facebook \
+  -H "Content-Type: application/json" \
+  -d '{
+    "accessToken": "YOUR_FACEBOOK_ACCESS_TOKEN",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }'
+*/
+POST http://localhost:8082/api/v1/social/facebook
+Content-Type: application/json
+
+{
+    "accessToken": "YOUR_FACEBOOK_ACCESS_TOKEN",
+    "deviceId": "device123",
+    "deviceName": "iPhone 15"
+  }
+
