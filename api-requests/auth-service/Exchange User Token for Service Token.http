@@ -1,0 +1,25 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/service/exchange \
+  -H "Content-Type: application/json" \
+  -d '{
+    "subject_token": "USER_ACCESS_TOKEN",
+    "subject_token_type": "urn:ietf:params:oauth:token-type:access_token",
+    "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+    "scope": "message:read",
+    "audience": "chat-service"
+  }'
+*/
+POST http://localhost:8082/api/v1/service/exchange
+Content-Type: application/json
+
+{
+    "subject_token": "USER_ACCESS_TOKEN",
+    "subject_token_type": "urn:ietf:params:oauth:token-type:access_token",
+    "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+    "scope": "message:read",
+    "audience": "chat-service"
+  }
+

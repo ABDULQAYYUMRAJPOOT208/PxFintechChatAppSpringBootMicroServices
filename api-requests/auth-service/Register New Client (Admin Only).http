@@ -1,0 +1,37 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/clients/register \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ADMIN_TOKEN" \
+  -d '{
+    "clientName": "My Mobile App",
+    "clientType": "CONFIDENTIAL",
+    "grantTypes": ["authorization_code", "refresh_token"],
+    "redirectUris": ["myapp://callback", "https://myapp.com/callback"],
+    "scopes": ["openid", "profile", "message:read", "message:write"],
+    "authenticationMethods": ["client_secret_basic"],
+    "accessTokenValidity": 3600,
+    "refreshTokenValidity": 86400,
+    "requireProofKey": true,
+    "requireAuthorizationConsent": true
+  }'
+*/
+POST http://localhost:8082/api/v1/clients/register
+Authorization: Bearer ADMIN_TOKEN
+Content-Type: application/json
+
+{
+    "clientName": "My Mobile App",
+    "clientType": "CONFIDENTIAL",
+    "grantTypes": ["authorization_code", "refresh_token"],
+    "redirectUris": ["myapp://callback", "https://myapp.com/callback"],
+    "scopes": ["openid", "profile", "message:read", "message:write"],
+    "authenticationMethods": ["client_secret_basic"],
+    "accessTokenValidity": 3600,
+    "refreshTokenValidity": 86400,
+    "requireProofKey": true,
+    "requireAuthorizationConsent": true
+  }
+

@@ -1,0 +1,23 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/service/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "serviceName": "user-service",
+    "serviceSecret": "generated-secret-during-registration",
+    "targetService": "chat-service",
+    "scope": "service message:read"
+  }'
+*/
+POST http://localhost:8082/api/v1/service/token
+Content-Type: application/json
+
+{
+    "serviceName": "user-service",
+    "serviceSecret": "generated-secret-during-registration",
+    "targetService": "chat-service",
+    "scope": "service message:read"
+  }
+

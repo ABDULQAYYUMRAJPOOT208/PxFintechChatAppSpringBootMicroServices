@@ -1,0 +1,82 @@
+sequenceDiagram
+    participant Client
+    participant SocialProvider as Google/Facebook/Apple
+    participant AuthController as AuthenticationController.java
+    participant SocialLoginService as SocialLoginServiceImpl.java (Auth Service)
+    participant SocialUserRepo as SocialUserRepository.java (Auth Service)
+    participant UserSvcClient as RestTemplate (Auth Service)
+    participant UserController as UserController.java
+    participant UserService as UserService.java (User Service)
+    participant UserRepo as UserRepository.java (User Service)
+    participant AuthDB as Auth Database
+    participant UserDB as User Database
+
+    box "Authentication Service (Port 8082)"
+        AuthController
+        SocialLoginService
+        SocialUserRepo
+        UserSvcClient
+    end
+    box "User Service (Port 8080)"
+        UserController
+        UserService
+        UserRepo
+    end
+
+    Client->>SocialProvider: 1. User clicks "Sign in with Google/Facebook/Apple"
+    SocialProvider-->>Client: 2. Returns idToken (Google/Apple) or accessToken (Facebook)
+
+    Client->>AuthController: 3. POST /api/v1/auth/social/login (token, provider)
+    activate AuthController
+    AuthController->>SocialLoginService: 4. authenticateWithSocial(token, provider)
+    activate SocialLoginService
+
+    SocialLoginService->>SocialLoginService: 5. Call verify[Provider]Token(token) (e.g., verifyGoogleToken)
+    SocialLoginService->>SocialProvider: 6. Verify token with Social Provider's API
+    SocialProvider-->>SocialLoginService: 7. User Info (providerId, email, name, etc.)
+
+    SocialLoginService->>SocialUserRepo: 8. findByProviderAndProviderId(provider, providerId)
+    activate SocialUserRepo
+    SocialUserRepo-->>SocialLoginService: 9. SocialUser not found (NEW USER)
+    deactivate SocialUserRepo
+
+    SocialLoginService->>SocialLoginService: 10. createUserFromSocialProfile(userInfo, provider)
+    SocialLoginService->>UserSvcClient: 11. POST http://localhost:8080/api/v1/users/social (UserDTO: email, name, provider)
+    activate UserSvcClient
+    UserSvcClient->>UserController: 12. (HTTP Request) createSocialUser(UserDTO)
+    activate UserController
+    UserController->>UserService: 13. createSocialUser(UserDTO)
+    activate UserService
+    UserService->>UserRepo: 14. save(UserEntity)
+    activate UserRepo
+    UserRepo-->>UserService: 15. Saved UserEntity (with generated userId)
+    deactivate UserRepo
+    UserService-->>UserController: 16. UserDTO (with userId)
+    deactivate UserService
+    UserController-->>UserSvcClient: 17. (HTTP Response) UserDTO (with userId)
+    deactivate UserController
+    UserSvcClient-->>SocialLoginService: 18. UserDTO (with userId)
+
+    SocialLoginService->>SocialUserRepo: 19. save(SocialUserEntity: userId, provider, providerId, email, etc.)
+    activate SocialUserRepo
+    SocialUserRepo-->>SocialLoginService: 20. Saved SocialUserEntity
+    deactivate SocialUserRepo
+
+    SocialLoginService->>SocialLoginService: 21. Generate JWT Access Token (JwtTokenProvider.java)
+    SocialLoginService->>SocialLoginService: 22. Generate JWT Refresh Token (JwtTokenProvider.java)
+    SocialLoginService-->>AuthController: 23. SocialLoginResponse (accessToken, refreshToken, userId, isNewUser=true)
+    deactivate SocialLoginService
+    AuthController-->>Client: 24. 200 OK (SocialLoginResponse)
+    deactivate AuthController
+
+    alt Existing Social User (Steps 8-9 result in SocialUser found)
+        SocialLoginService->>SocialUserRepo: 8. findByProviderAndProviderId(provider, providerId)
+        activate SocialUserRepo
+        SocialUserRepo-->>SocialLoginService: 9. SocialUser found (existing userId)
+        deactivate SocialUserRepo
+        SocialLoginService->>SocialLoginService: 10. Update lastLoginAt for SocialUser
+        SocialLoginService->>SocialLoginService: 11. Generate JWT Access Token (JwtTokenProvider.java)
+        SocialLoginService->>SocialLoginService: 12. Generate JWT Refresh Token (JwtTokenProvider.java)
+        SocialLoginService-->>AuthController: 13. SocialLoginResponse (accessToken, refreshToken, userId, isNewUser=false)
+        AuthController-->>Client: 14. 200 OK (SocialLoginResponse)
+    end

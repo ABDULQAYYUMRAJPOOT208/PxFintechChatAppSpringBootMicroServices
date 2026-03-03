@@ -82,9 +82,9 @@ public class JwtTokenProvider {
         }
     }
 
-    public String getTokenId(String token) {
-        return getClaimFromToken(token, claims -> claims.get("jti", String.class));
-    }
+//    public String getTokenId(String token) {
+//        return getClaimFromToken(token, claims -> claims.get("jti", String.class));
+//    }
 
     public String getUserIdFromToken(String token) {
         return getClaimFromToken(token, claims -> claims.get("userId", String.class));
@@ -118,10 +118,10 @@ public class JwtTokenProvider {
         return expiration.before(new Date());
     }
 
-    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getAllClaimsFromToken(token);
-        return claimsResolver.apply(claims);
-    }
+//    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+//        final Claims claims = getAllClaimsFromToken(token);
+//        return claimsResolver.apply(claims);
+//    }
 
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parserBuilder()
@@ -129,6 +129,30 @@ public class JwtTokenProvider {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+    public String createTokenWithCustomClaims(Map<String, Object> claims, String subject, Long expiry) {
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(subject)
+                .setIssuer(issuer)
+                .setAudience(audience)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expiry))
+                .signWith(key(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String getSubjectFromToken(String token) {
+        return getClaimFromToken(token, Claims::getSubject);
+    }
+
+    public String getTokenId(String token) {
+        return getClaimFromToken(token, claims -> claims.get("jti", String.class));
+    }
+
+    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = getAllClaimsFromToken(token);
+        return claimsResolver.apply(claims);
     }
 
     public Long getAccessTokenExpiration() {

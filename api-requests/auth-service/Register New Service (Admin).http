@@ -1,0 +1,10 @@
+
+
+### curl request
+/*
+curl -X POST "http://localhost:8082/api/v1/service/register?serviceName=notification-service&description=Notification%20Service&allowedScopes=push,sms,email" \
+  -H "Authorization: Bearer ADMIN_TOKEN"
+*/
+POST http://localhost:8082/api/v1/service/register?serviceName=notification-service&description=Notification%20Service&allowedScopes=push,sms,email
+Authorization: Bearer ADMIN_TOKEN
+

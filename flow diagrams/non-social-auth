@@ -1,0 +1,87 @@
+sequenceDiagram
+    participant Client
+    participant AuthController as AuthenticationController.java
+    participant AuthService as AuthService.java (Auth Service)
+    participant AuthRepo as UserRepository.java (Auth Service)
+    participant UserSvcClient as RestTemplate (Auth Service)
+    participant UserController as UserController.java
+    participant UserService as UserService.java (User Service)
+    participant UserRepo as UserRepository.java (User Service)
+    participant AuthDB as Auth Database
+    participant UserDB as User Database
+
+    box "Authentication Service (Port 8082)"
+        AuthService
+        AuthRepo
+        UserSvcClient
+    end
+    box "User Service (Port 8080)"
+        UserController
+        UserService
+        UserRepo
+    end
+
+    Client->>AuthController: 1. POST /api/v1/auth/register (email, password)
+    activate AuthController
+    AuthController->>AuthService: 2. registerUser(email, password)
+    activate AuthService
+    AuthService->>AuthRepo: 3. findByEmail(email)
+    activate AuthRepo
+    AuthRepo-->>AuthService: 4. User not found (unique email)
+    deactivate AuthRepo
+
+    AuthService->>UserSvcClient: 5. POST http://localhost:8080/api/v1/users (UserDTO: email, password, etc.)
+    activate UserSvcClient
+    UserSvcClient->>UserController: 6. (HTTP Request) createUser(UserDTO)
+    activate UserController
+    UserController->>UserService: 7. createUser(UserDTO)
+    activate UserService
+    UserService->>UserRepo: 8. save(UserEntity)
+    activate UserRepo
+    UserRepo-->>UserService: 9. Saved UserEntity (with generated userId)
+    deactivate UserRepo
+    UserService-->>UserController: 10. UserDTO (with userId)
+    deactivate UserService
+    UserController-->>UserSvcClient: 11. (HTTP Response) UserDTO (with userId)
+    deactivate UserController
+    UserSvcClient-->>AuthService: 12. UserDTO (with userId)
+    deactivate UserSvcClient
+
+    AuthService->>AuthRepo: 13. save(AuthUserEntity: email, hashed_password, userId)
+    activate AuthRepo
+    AuthRepo-->>AuthService: 14. Saved AuthUserEntity
+    deactivate AuthRepo
+    AuthService-->>AuthController: 15. Registration Success
+    deactivate AuthService
+    AuthController-->>Client: 16. 201 Created (Registration successful)
+    deactivate AuthController
+
+    Client->>AuthController: 17. POST /api/v1/auth/login (email, password)
+    activate AuthController
+    AuthController->>AuthService: 18. loginUser(email, password)
+    activate AuthService
+    AuthService->>AuthRepo: 19. findByEmail(email)
+    activate AuthRepo
+    AuthRepo-->>AuthService: 20. AuthUserEntity (hashed_password, userId)
+    deactivate AuthRepo
+    AuthService->>AuthService: 21. Verify password (using PasswordEncoder)
+    AuthService->>AuthService: 22. Generate JWT Access Token (JwtTokenProvider.java)
+    AuthService->>AuthService: 23. Generate JWT Refresh Token (JwtTokenProvider.java)
+    AuthService-->>AuthController: 24. LoginResponse (accessToken, refreshToken)
+    deactivate AuthService
+    AuthController-->>Client: 25. 200 OK (LoginResponse)
+    deactivate AuthController
+
+    Client->>UserController: 26. GET /api/v1/users/{userId} (Header: Authorization: Bearer <accessToken>)
+    activate UserController
+    UserController->>UserService: 27. (Spring Security Filter) Validate JWT Token
+    activate UserService
+    UserService->>UserService: 28. (JwtTokenProvider.java) Parse & Validate Token
+    UserService->>UserRepo: 29. findById(userId from token)
+    activate UserRepo
+    UserRepo-->>UserService: 30. UserEntity
+    deactivate UserRepo
+    UserService-->>UserController: 31. UserDTO
+    deactivate UserService
+    UserController-->>Client: 32. 200 OK (User Profile Data)
+    deactivate UserController

@@ -1,0 +1,23 @@
+
+
+### curl request
+/*
+curl -X POST http://localhost:8082/api/v1/social/link \
+  -H "Authorization: Bearer YOUR_USER_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "google",
+    "idToken": "YOUR_GOOGLE_ID_TOKEN",
+    "linkAccount": true
+  }'
+*/
+POST http://localhost:8082/api/v1/social/link
+Authorization: Bearer YOUR_USER_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "provider": "google",
+    "idToken": "YOUR_GOOGLE_ID_TOKEN",
+    "linkAccount": true
+  }
+

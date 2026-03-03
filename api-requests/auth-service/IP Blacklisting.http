@@ -1,0 +1,15 @@
+
+
+### curl request
+/*
+curl -X POST "http://localhost:8082/api/v1/security/admin/ip/blacklist/192.168.1.100?reason=Testing&durationMinutes=60" \
+  -H "Authorization: Bearer ADMIN_TOKEN"
+
+# Try accessing from blacklisted IP
+curl -X GET http://localhost:8082/api/v1/users/profile \
+  -H "X-Forwarded-For: 192.168.1.100"
+*/
+GET http://localhost:8082/api/v1/users/profile
+Authorization: Bearer ADMIN_TOKEN
+X-Forwarded-For: 192.168.1.100
+
