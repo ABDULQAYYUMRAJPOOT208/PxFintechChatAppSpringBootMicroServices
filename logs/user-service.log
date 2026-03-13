@@ -1,31 +1,32 @@
-2026-03-02 20:55:40 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 93916 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
-2026-03-02 20:55:40 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 195 ms. Found 1 JPA repository interfaces.
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2026-03-02 20:55:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2026-03-02 20:55:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2026-03-02 20:55:44 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-03-02 20:55:44 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
-2026-03-02 20:55:44 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
-2026-03-02 20:55:44 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3810 ms
-2026-03-02 20:55:44 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-02 20:55:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
-2026-03-02 20:55:44 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
-2026-03-02 20:55:45 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-02 20:55:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-03-02 20:55:45 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6adcf059
-2026-03-02 20:55:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-03-02 20:55:45 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-02 20:55:47 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-02 20:55:47 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-02 20:55:49 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
-2026-03-02 20:55:49 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-02 20:55:49 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2252dc5d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@149e457, org.springframework.security.web.context.SecurityContextHolderFilter@5c519da4, org.springframework.security.web.header.HeaderWriterFilter@2afe263, org.springframework.web.filter.CorsFilter@72557e0d, org.springframework.web.filter.CorsFilter@14b4caba, org.springframework.security.web.authentication.logout.LogoutFilter@755c29b0, com.pxfintech.user_service.security.JwtAuthenticationFilter@5e1e19af, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ef2f84c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4414ee28, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20305c45, org.springframework.security.web.session.SessionManagementFilter@644eed73, org.springframework.security.web.access.ExceptionTranslationFilter@1314ccc1, org.springframework.security.web.access.intercept.AuthorizationFilter@521e34d4]
-2026-03-02 20:55:50 [main] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values: 
+2026-03-03 17:05:14 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 171785 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
+2026-03-03 17:05:14 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-03 17:05:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:05:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03 17:05:16 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 214 ms. Found 1 JPA repository interfaces.
+2026-03-03 17:05:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:05:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-03 17:05:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-03 17:05:17 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+2026-03-03 17:05:18 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-03-03 17:05:18 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-03 17:05:18 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-03 17:05:18 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2026-03-03 17:05:18 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3724 ms
+2026-03-03 17:05:18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-03 17:05:19 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-03 17:05:19 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-03 17:05:19 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03 17:05:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-03 17:05:19 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1b98355f
+2026-03-03 17:05:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-03 17:05:19 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03 17:05:21 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03 17:05:21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:05:22 [main] WARN  o.s.c.LocalVariableTableParameterNameDiscoverer - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.pxfintech.user_service.service.OTPService
+2026-03-03 17:05:23 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-03-03 17:05:23 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03 17:05:23 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b78cbee, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@70b67841, org.springframework.security.web.context.SecurityContextHolderFilter@2be9add0, org.springframework.security.web.header.HeaderWriterFilter@755c29b0, org.springframework.web.filter.CorsFilter@7aa44fa2, org.springframework.web.filter.CorsFilter@4c43c37d, org.springframework.security.web.authentication.logout.LogoutFilter@35fea0cd, com.pxfintech.user_service.security.JwtAuthenticationFilter@202b5293, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@149e457, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14b4caba, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61c946a0, org.springframework.security.web.session.SessionManagementFilter@3687f6b6, org.springframework.security.web.access.ExceptionTranslationFilter@81198ed, org.springframework.security.web.access.intercept.AuthorizationFilter@5a4833ab]
+2026-03-03 17:05:24 [main] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values: 
 	auto.include.jmx.reporter = true
 	bootstrap.servers = [localhost:9092]
 	client.dns.lookup = use_all_dns_ips
@@ -96,15 +97,184 @@
 	ssl.truststore.password = null
 	ssl.truststore.type = JKS
 
-2026-03-02 20:55:50 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.4.1
-2026-03-02 20:55:50 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 8a516edc2755df89
-2026-03-02 20:55:50 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1772466950520
-2026-03-02 20:55:51 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
-2026-03-02 20:55:51 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
-2026-03-02 20:55:51 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
-2026-03-02 20:55:51 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
-2026-03-02 20:55:51 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api/v1'
-2026-03-02 20:55:51 [main] INFO  c.p.u.UserServiceApplication - Started UserServiceApplication in 11.548 seconds (process running for 12.505)
-2026-03-02 20:57:45 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-02 20:57:45 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-03-02 20:57:45 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-03 17:05:24 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.4.1
+2026-03-03 17:05:24 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 8a516edc2755df89
+2026-03-03 17:05:24 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1772539524947
+2026-03-03 17:05:25 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+2026-03-03 17:05:25 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-03-03 17:05:25 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-03-03 17:05:25 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-03-03 17:05:25 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api/v1'
+2026-03-03 17:05:25 [main] INFO  c.p.u.UserServiceApplication - Started UserServiceApplication in 12.181 seconds (process running for 13.312)
+2026-03-03 17:18:58 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-03 17:18:58 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-03 17:18:58 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2026-03-03 17:18:59 [http-nio-8080-exec-2] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-03-03 17:21:24 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:21:24 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-03 17:21:24 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-03 17:21:32 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 174135 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
+2026-03-03 17:21:32 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 279 ms. Found 1 JPA repository interfaces.
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-03 17:21:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-03-03 17:21:36 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-03-03 17:21:36 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-03 17:21:36 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-03 17:21:36 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2026-03-03 17:21:36 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4231 ms
+2026-03-03 17:21:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-03 17:21:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-03 17:21:37 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-03 17:21:37 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03 17:21:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-03 17:21:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@13404f75
+2026-03-03 17:21:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-03 17:21:37 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03 17:21:39 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03 17:21:39 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:21:40 [main] WARN  o.s.c.LocalVariableTableParameterNameDiscoverer - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.pxfintech.user_service.service.OTPService
+2026-03-03 17:21:40 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [/home/vos/work/java/FintechChatApp/user-service/target/classes/com/pxfintech/user_service/controller/AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'authServiceImp' defined in file [/home/vos/work/java/FintechChatApp/user-service/target/classes/com/pxfintech/user_service/service/AuthServiceImp.class]: Unsatisfied dependency expressed through constructor parameter 5: No qualifying bean of type 'com.pxfintech.user_service.dto.user.UserResponseDto' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-03 17:21:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:21:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-03 17:21:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-03 17:21:40 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-03 17:21:40 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-03 17:21:40 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 5 of constructor in com.pxfintech.user_service.service.AuthServiceImp required a bean of type 'com.pxfintech.user_service.dto.user.UserResponseDto' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.pxfintech.user_service.dto.user.UserResponseDto' in your configuration.
+
+2026-03-03 17:23:34 [main] INFO  c.p.u.UserServiceApplication - Starting UserServiceApplication using Java 21.0.10 with PID 174495 (/home/vos/work/java/FintechChatApp/user-service/target/classes started by vos in /home/vos/work/java/FintechChatApp)
+2026-03-03 17:23:34 [main] INFO  c.p.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 338 ms. Found 1 JPA repository interfaces.
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.pxfintech.user_service.repo.UserRepo; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-03-03 17:23:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+2026-03-03 17:23:39 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2026-03-03 17:23:39 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-03 17:23:39 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-03-03 17:23:40 [main] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring embedded WebApplicationContext
+2026-03-03 17:23:40 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5293 ms
+2026-03-03 17:23:40 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-03 17:23:40 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2026-03-03 17:23:40 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2026-03-03 17:23:41 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-03 17:23:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-03 17:23:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1450ffa3
+2026-03-03 17:23:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-03 17:23:41 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-03 17:23:42 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-03 17:23:42 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:23:43 [main] WARN  o.s.c.LocalVariableTableParameterNameDiscoverer - Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.pxfintech.user_service.service.OTPService
+2026-03-03 17:23:44 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2026-03-03 17:23:44 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-03 17:23:45 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2f1d2384, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50c20b15, org.springframework.security.web.context.SecurityContextHolderFilter@1e6be9f0, org.springframework.security.web.header.HeaderWriterFilter@149bdb4e, org.springframework.web.filter.CorsFilter@6dcf39c6, org.springframework.web.filter.CorsFilter@1c0f32ad, org.springframework.security.web.authentication.logout.LogoutFilter@7469c73d, com.pxfintech.user_service.security.JwtAuthenticationFilter@4c31b6c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@608f79a8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3687f6b6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a4833ab, org.springframework.security.web.session.SessionManagementFilter@37ecc472, org.springframework.security.web.access.ExceptionTranslationFilter@57596d71, org.springframework.security.web.access.intercept.AuthorizationFilter@240b656f]
+2026-03-03 17:23:45 [main] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values: 
+	auto.include.jmx.reporter = true
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2026-03-03 17:23:46 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.4.1
+2026-03-03 17:23:46 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 8a516edc2755df89
+2026-03-03 17:23:46 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1772540626148
+2026-03-03 17:23:46 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+2026-03-03 17:23:46 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-03-03 17:23:46 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-03-03 17:23:46 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-03-03 17:23:46 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/api/v1'
+2026-03-03 17:23:46 [main] INFO  c.p.u.UserServiceApplication - Started UserServiceApplication in 12.978 seconds (process running for 14.138)
+2026-03-03 17:23:58 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api/v1] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-03 17:23:58 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-03 17:23:58 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-03-03 17:23:59 [http-nio-8080-exec-2] INFO  c.p.u.controller.AuthController - Login is called with phone: 03250880763
+2026-03-03 17:23:59 [http-nio-8080-exec-2] INFO  c.p.u.service.AuthServiceImp - Login attempt for phone: 03250880763
+2026-03-03 17:23:59 [http-nio-8080-exec-2] INFO  c.p.u.controller.AuthController - Response got after login is >> AuthResponse(message=OTP sent successfully, phoneNumber=03250880763, user=UserResponseDto(id=1c230856-835e-4e08-aedd-f82f99cc3b67, phoneNumber=03250880763, fullName=ABDUL QAYYUM, email=educationlogin1234@gmail.com, isVerified=true, isOnline=null, lastLoginAt=null, createdAt=null), success=true, accessToken=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwidXNlcklkIjoiMWMyMzA4NTYtODM1ZS00ZTA4LWFlZGQtZjgyZjk5Y2MzYjY3Iiwic3ViIjoiMDMyNTA4ODA3NjMiLCJpYXQiOjE3NzI1NDA2MzksImV4cCI6MTc3MjU0MTUzOX0.BZC5b98H3Sy1Vi8uiAGsDgxcJTdLMVVsvw8wWRfj7Qg, refreshToken=eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoicmVmcmVzaCIsInN1YiI6IjAzMjUwODgwNzYzIiwiaWF0IjoxNzcyNTQwNjM5LCJleHAiOjE3NzMxNDU0Mzl9.mUvBYxVxNNpRS_sMBPUBVmZ-TJcSSVqOwbed_9ZxA5s, tokenType=Bearer, expiresIn=null)
+2026-03-03 17:24:39 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-03 17:24:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-03 17:24:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

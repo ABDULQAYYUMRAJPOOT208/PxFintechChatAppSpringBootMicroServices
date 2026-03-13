@@ -8,10 +8,13 @@ import com.pxfintech.user_service.dto.user.UserResponseDto;
 import com.pxfintech.user_service.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -28,7 +31,9 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody UserLoginRequestDto request)
     {
+//        log.info("Login is called with phone: {}", request.getPhoneNumber());
         AuthResponse response = authService.login(request);
+//        log.info("Response got after login is >> {}",response);
         return ResponseEntity.ok(response);
     }
 

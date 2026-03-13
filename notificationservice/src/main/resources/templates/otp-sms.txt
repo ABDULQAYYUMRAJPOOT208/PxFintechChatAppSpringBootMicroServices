@@ -1,0 +1,5 @@
+Your OTP for Fintech App is: ${otp}
+
+This code will expire in 5 minutes. Never share this code with anyone.
+
+If you didn't request this, please ignore this message.

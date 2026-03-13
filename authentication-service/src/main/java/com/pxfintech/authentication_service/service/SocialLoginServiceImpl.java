@@ -1,5 +1,6 @@
 package com.pxfintech.authentication_service.service;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pxfintech.authentication_service.dto.request.SocialLoginRequest;

@@ -1,10 +1,23 @@
 package com.pxfintech.authentication_service.config;
+import com.pxfintech.authentication_service.controller.LoginController;
+import com.pxfintech.authentication_service.security.RateLimitingFilter;
+import com.pxfintech.authentication_service.security.SecurityHeadersFilter;
 import com.pxfintech.authentication_service.security.ServiceAuthenticationFilter;
+import com.pxfintech.authentication_service.service.RateLimitingService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SecurityConfig {
     // Add to existing SecurityConfig.java
-
-
+    RateLimitingService rateLimitingService;
+    RateLimitingFilter rateLimitingFilter;
+    SecurityHeadersFilter securityHeadersFilter;
+    ObjectMapper objectMapper;
     // Add this bean
     @Bean
     public SecurityFilterChain serviceSecurityFilterChain(HttpSecurity http,

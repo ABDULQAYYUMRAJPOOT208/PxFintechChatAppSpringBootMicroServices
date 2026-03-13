@@ -17,15 +17,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true) // phoneNumber can be null for social users
     private String phoneNumber;
 
     @Column(nullable = false)
     private String fullName;
 
+    @Column(unique = true) // email can be null for some social providers, but generally unique
     private String email;
 
-    private String password;
+    private String password; // Should be hashed
+
+    private String profilePicture; // For social logins
+    private String authProvider;   // e.g., "google", "facebook", "apple"
 
     private Boolean isVerified = false;
 
@@ -43,6 +47,8 @@ public class User {
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", authProvider='" + authProvider + '\'' +
                 ", isVerified=" + isVerified +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
@@ -64,4 +70,3 @@ public class User {
     }
 
 }
-

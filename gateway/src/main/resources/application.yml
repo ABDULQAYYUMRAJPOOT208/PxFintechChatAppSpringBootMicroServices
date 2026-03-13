@@ -1,0 +1,252 @@
+# ===================================
+# Application
+# ===================================
+spring:
+  application:
+    name: api-gateway
+  
+  profiles:
+    active: dev
+  
+  # Cloud Gateway Configuration
+  cloud:
+    gateway:
+      metrics:
+        enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      
+      # Global Filters
+      default-filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 100
+            redis-rate-limiter.burstCapacity: 200
+            redis-rate-limiter.requestedTokens: 1
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      
+      # Route Configuration
+      routes:
+        # User Service Routes
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/users/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: userServiceBreaker
+                fallbackUri: forward:/fallback/users
+            - name: Retry
+              args:
+                retries: 3
+                statuses: SERVICE_UNAVAILABLE, GATEWAY_TIMEOUT
+                methods: GET, POST
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 50
+                redis-rate-limiter.burstCapacity: 100
+
+        - id: user-service-auth
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/auth/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - name: CircuitBreaker
+              args:
+                name: authServiceBreaker
+                fallbackUri: forward:/fallback/auth
+        
+        # Authentication Service Routes
+        - id: auth-service
+          uri: lb://AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/api/v1/oauth2/**, /api/v1/service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: authServiceBreaker
+                fallbackUri: forward:/fallback/auth
+        
+        # Chat Service Routes
+        - id: chat-service
+          uri: lb://CHAT-SERVICE
+          predicates:
+            - Path=/api/v1/messages/**, /api/v1/conversations/**, /ws/chat/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: chatServiceBreaker
+                fallbackUri: forward:/fallback/chat
+        
+        # Payment Service Routes
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/api/v1/payments/**, /api/v1/pos/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: paymentServiceBreaker
+                fallbackUri: forward:/fallback/payments
+        
+        # Wallet Service Routes
+        - id: wallet-service
+          uri: lb://WALLET-SERVICE
+          predicates:
+            - Path=/api/v1/wallets/**, /api/v1/balance/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: walletServiceBreaker
+                fallbackUri: forward:/fallback/wallet
+        
+        # Notification Service Routes
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/v1/notifications/**, /api/v1/preferences/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: notificationServiceBreaker
+                fallbackUri: forward:/fallback/notifications
+  data:
+    redis:
+          host: localhost
+          port: 6379
+          password:
+          timeout: 2000ms
+          lettuce:
+            pool:
+              max-active: 8
+              max-idle: 8
+              min-idle: 0
+
+# ===================================
+# Server Configuration
+# ===================================
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+    min-response-size: 1024
+  http2:
+    enabled: true
+
+# ===================================
+# Eureka Configuration
+# ===================================
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+
+# ===================================
+# Resilience4J Circuit Breaker
+# ===================================
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 100
+        permittedNumberOfCallsInHalfOpenState: 10
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 60
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+    instances:
+      userServiceBreaker:
+        baseConfig: default
+      authServiceBreaker:
+        baseConfig: default
+      chatServiceBreaker:
+        baseConfig: default
+      paymentServiceBreaker:
+        baseConfig: default
+      walletServiceBreaker:
+        baseConfig: default
+      notificationServiceBreaker:
+        baseConfig: default
+  
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 30s
+        cancelRunningFuture: true
+
+# ===================================
+# Valkey (Redis) Configuration
+# ===================================
+
+# ===================================
+# Rate Limiting Configuration
+# ===================================
+rate-limiter:
+  enabled: true
+  public:
+    replenishRate: 10
+    burstCapacity: 20
+  authenticated:
+    replenishRate: 100
+    burstCapacity: 200
+  premium:
+    replenishRate: 500
+    burstCapacity: 1000
+
+# ===================================
+# JWT Configuration
+# ===================================
+jwt:
+  secret: ${JWT_SECRET:mySecretKeyForJWTTokenGenerationAndValidation2023}
+  auth-service-url: http://localhost:8082/api/v1
+
+# ===================================
+# Public Endpoints (No Authentication)
+# ===================================
+public:
+  endpoints:
+    - /api/v1/auth/register
+    - /api/v1/auth/login
+    - /api/v1/auth/verify-otp
+    - /api/v1/auth/resend-otp
+    - /actuator/health
+    - /actuator/info
+
+# ===================================
+# Management & Monitoring
+# ===================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,circuitbreakerevents
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+# ===================================
+# Logging
+# ===================================
+logging:
+  level:
+    com.fintech.gateway: DEBUG
+    org.springframework.cloud.gateway: INFO
+    org.springframework.security: INFO
+    reactor.netty.http.client: INFO

@@ -11,6 +11,7 @@ import com.pxfintech.user_service.repo.UserRepo;
 import com.pxfintech.user_service.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,8 @@ public class AuthServiceImp implements AuthService {
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
     private final UserEventProducer userEventProducer;
+    @Autowired
+    private final UserResponseDto userResponseDto;
 
     @Override
     public UserResponseDto register(UserRegisterRequestDto request) {
@@ -79,10 +82,17 @@ public class AuthServiceImp implements AuthService {
 
         String token = jwtTokenProvider.generateToken(user.getPhoneNumber(), user.getId());
         String refreshToken = jwtTokenProvider.generateRefreshToken(user.getPhoneNumber());
+        userResponseDto.setId(user.getId());
+        userResponseDto.setEmail(user.getEmail());
+        userResponseDto.setFullName(user.getFullName());
+        userResponseDto.setPhoneNumber(user.getPhoneNumber());
+        userResponseDto.setIsVerified(user.getIsVerified());
+        user.setIsOnline(true);
 
         return AuthResponse.builder()
                 .message("OTP sent successfully")
                 .phoneNumber(request.getPhoneNumber())
+                .user(userResponseDto)
                 .success(true)
                 .accessToken(token)
                 .refreshToken(refreshToken)
